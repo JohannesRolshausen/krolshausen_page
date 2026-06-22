@@ -6,10 +6,11 @@ import App from './App.tsx'
 import ContentPage from './components/ContentPage.tsx'
 import HomePage from './pages/HomePage.tsx'
 import KontaktPage from './pages/KontaktPage.tsx'
-import SubPage from './pages/SubPage.tsx'
+import ImpressumDatenschutzPage from './pages/ImpressumDatenschutzPage.tsx'
 import UeberMichPage from './pages/UeberMichPage.tsx'
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
   {
     path: '/',
     element: <App />,
@@ -23,10 +24,12 @@ const router = createBrowserRouter([
       { path: 'mehr-als-text', element: <ContentPage /> },
       { path: 'ueber-mich', element: <UeberMichPage /> },
       { path: 'kontakt', element: <KontaktPage /> },
-      { path: 'impressum-datenschutz', element: <SubPage /> },
+      { path: 'impressum-datenschutz', element: <ImpressumDatenschutzPage /> },
     ],
   },
-])
+  ],
+  { basename: import.meta.env.BASE_URL },
+)
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

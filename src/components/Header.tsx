@@ -41,22 +41,24 @@ export default function Header() {
           </div>
         )}
 
-        <div className="header-right">
-          <div className="profile">
-            <div className="portrait-wrap">
-              {!portraitError ? (
-                <img
-                  src={portraitSrc}
-                  alt="Katharina Rolshausen"
-                  className="portrait-image"
-                  onError={() => setPortraitError(true)}
-                />
-              ) : (
-                <div className="image-placeholder portrait-placeholder">
-                  <span>Foto</span>
-                </div>
-              )}
-            </div>
+        <div className="header-end">
+          <div className="header-profile">
+            <Link to={ROUTES.ueberMich} className="portrait-link" aria-label="Über mich">
+              <div className="portrait-wrap">
+                {!portraitError ? (
+                  <img
+                    src={portraitSrc}
+                    alt=""
+                    className="portrait-image"
+                    onError={() => setPortraitError(true)}
+                  />
+                ) : (
+                  <div className="image-placeholder portrait-placeholder">
+                    <span>Foto</span>
+                  </div>
+                )}
+              </div>
+            </Link>
             <Link to={ROUTES.ueberMich} className="profile-name">
               Katharina Rolshausen
             </Link>

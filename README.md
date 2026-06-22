@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# Fokus Text – Katharina Rolshausen
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website für Katharina Rolshausen (Journalistin, Gastrokolumnistin, PR-Redaktion u. a.), gebaut mit React, TypeScript und Vite.
 
-Currently, two official plugins are available:
+## Entwicklung
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Die App läuft lokal unter [http://localhost:5173](http://localhost:5173).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+Erzeugt die Produktionsversion im Ordner `dist/`.
+
+## Deployment auf GitHub Pages
+
+Das Projekt nutzt [`gh-pages`](https://github.com/tschaub/gh-pages), um den Build automatisch auf GitHub Pages zu veröffentlichen.
+
+### Einmalige Einrichtung auf GitHub
+
+1. Repository auf GitHub öffnen: [JohannesRolshausen/krolshausen_page](https://github.com/JohannesRolshausen/krolshausen_page)
+2. **Settings** → **Pages**
+3. Unter **Build and deployment** → **Source** wählen: **Deploy from a branch**
+4. Branch: **`gh-pages`**, Ordner: **`/ (root)`**
+5. **Save** klicken
+
+### Deploy ausführen
+
+Voraussetzung: Du bist eingeloggt und hast Schreibrechte auf das Repository (Git remote `origin` muss auf GitHub zeigen).
+
+```bash
+npm run deploy
+```
+
+Das Skript führt automatisch `npm run build` aus und pusht den Inhalt von `dist/` auf den Branch `gh-pages`.
+
+Nach ein paar Minuten ist die Seite erreichbar unter:
+
+**https://johannesrolshausen.github.io/krolshausen_page/**
+
+### Hinweise
+
+- Die `base`-URL in `vite.config.ts` ist auf `/krolshausen_page/` gesetzt (Projekt-URL auf GitHub Pages).
+- React Router nutzt denselben Pfad über `import.meta.env.BASE_URL`.
+- Für direkte Aufrufe von Unterseiten wird beim Build eine `404.html` erzeugt (Kopie von `index.html`), damit Client-Routing auf GitHub Pages funktioniert.
+- Bei jedem erneuten Deploy einfach wieder `npm run deploy` ausführen.
