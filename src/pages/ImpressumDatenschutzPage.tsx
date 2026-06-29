@@ -32,7 +32,7 @@ function LegalBlock({
 
 export default function ImpressumDatenschutzPage() {
   useEffect(() => {
-    document.title = 'Impressum & Datenschutz – Fokus Text'
+    document.title = 'Impressum & Datenschutz - Fokus Text'
   }, [])
 
   return (
