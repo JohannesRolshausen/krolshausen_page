@@ -7,10 +7,19 @@ export interface BlogPost {
   image?: string
 }
 
+export interface PageCta {
+  label: string
+  title: string
+  text?: string
+  buttonLabel: string
+  href: string
+}
+
 export interface PageContent {
   title: string
   color: TileColor
   paragraphs: string[]
+  cta?: PageCta
   showBlog?: boolean
   blogPosts?: BlogPost[]
 }
@@ -52,6 +61,13 @@ export const PAGE_CONTENT: Record<string, PageContent> = {
       'Märchen, Novellen, absurde Literatur: Ich entwickle Bücher, Reihen, Figuren und erzählerische Konzepte.',
       'Besonders reizt mich der Perspektivwechsel: vertraute Stoffe neu betrachten, Stimmen hörbar machen, Humor und Tiefe verbinden. Meine Texte dürfen klug, absurd, hart sein, aber nie leblos.',
     ],
+    cta: {
+      label: 'Buch',
+      title: 'Meine Bücher',
+      text: 'Alle Titel gibt es gesammelt auf meiner Autorinnenseite bei Amazon.',
+      buttonLabel: 'Bücher bei Amazon ansehen',
+      href: 'https://www.amazon.de/stores/Katharina-Rolshausen/author/B0H6C8WLY9/allbooks',
+    },
     showBlog: true,
     blogPosts: [],
   },
